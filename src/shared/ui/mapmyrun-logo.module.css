@@ -1,0 +1,13 @@
+.logo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  font-size: 45px;
+  font-weight: 900;
+  letter-spacing: 1.8px;
+  line-height: 0.9;
+  color: #111;
+}

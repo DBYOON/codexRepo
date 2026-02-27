@@ -1,0 +1,184 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  min-width: 340px;
+  height: 100%;
+  border-right: 1px solid #cfcfcf;
+  background: #f4f4f4;
+}
+
+.section {
+  padding: 22px 16px;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.routeTitle {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: #222;
+}
+
+.metricBlock {
+  margin-top: 22px;
+}
+
+.metricLabel {
+  color: #9c0e25;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.metricValue {
+  margin-top: 8px;
+  color: #121212;
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.sectionTitle {
+  font-size: 29px;
+  font-weight: 800;
+  color: #222;
+}
+
+.searchBox {
+  margin-top: 20px;
+  display: flex;
+  height: 54px;
+  border: 1px solid #c2c2c2;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.searchBox input {
+  flex: 1;
+  border: 0;
+  padding: 0 12px;
+  font-size: 18px;
+  outline: none;
+  background: transparent;
+}
+
+.pinButton {
+  width: 56px;
+  border: 0;
+  border-left: 1px solid #c2c2c2;
+  background: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.subTitle {
+  margin-top: 24px;
+  color: #991226;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.activityTabs {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid #b7b7b7;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.tab {
+  height: 46px;
+  border: 0;
+  border-right: 1px solid #b7b7b7;
+  font-size: 12px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.tab:last-child {
+  border-right: 0;
+}
+
+.activeTab {
+  background: #e4e4e4;
+}
+
+.toggleGroup {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.toggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #222;
+  font-size: 23px;
+}
+
+.switch {
+  width: 52px;
+  height: 30px;
+  border: 0;
+  border-radius: 999px;
+  padding: 3px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.on {
+  background: #2f2f2f;
+}
+
+.off {
+  background: #d8d8d8;
+}
+
+.knob {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s ease;
+}
+
+.on .knob {
+  transform: translateX(22px);
+}
+
+.dropdown {
+  margin-top: 18px;
+  width: 100%;
+  height: 46px;
+  border: 0;
+  background: transparent;
+  color: #222;
+  font-size: 17px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.saveButton {
+  margin-top: auto;
+  height: 82px;
+  border: 0;
+  background: #0d0d0d;
+  color: #fff;
+  font-size: 35px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 100%;
+    min-width: 0;
+    border-right: 0;
+    border-bottom: 1px solid #cfcfcf;
+  }
+}
