@@ -1,43 +1,151 @@
-## 목적
+# 1. 목적
 
-모든 서브 에이전트와 스킬이 공통으로 따르는 엔지니어링 정책을 정의한다.
+이 문서는 프로젝트 내 모든 에이전트(전역 Agent 및 Skills Agent)가 공통으로 따르는 엔지니어링 정책을 정의한다.  
+코드 생성 및 수정 시 반드시 본 문서를 기준으로 판단한다.
 
-## Zustand 팀 컨벤션
+# 2. 적용 범위
 
-아래 5개만 현재 팀의 최소 필수 규칙으로 사용한다.
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- FSD 아키텍처
+- Zustand
+- 모든 기본 Agent 및 Skills Agent
 
-1. 스토어 경계
+규칙 적용 우선순위는 다음과 같다.
+
+`Root Agent → Skills Agent → 기존 코드 패턴`
+
+충돌 시 상위 문서를 따른다.
+
+# 3. 준수 기준 (MUST / SHOULD)
+
+## MUST
+
+- 코드 생성 전 본 문서를 참조한다.
+- 기존 코드 스타일과 패턴을 유지한다.
+- 디렉토리/파일 네이밍에 인위적 접두/접미어를 사용하지 않는다.
+- 네이밍은 역할 중심 단일 명사(`header`, `sidebar`, `map`)를 사용한다.
+- 컴포넌트 및 함수는 화살표 함수로 작성한다.
+- 불필요한 전역 상태를 생성하지 않는다.
+- 서버 상태와 클라이언트 상태를 혼합하지 않는다.
+
+## SHOULD
+
+- 변경은 작은 단위로 수행한다.
+- 반복되는 패턴은 추출한다.
+- 추상적 표현 대신 명확한 기준을 사용한다.
+- 구조 변경은 기존 아키텍처 방향을 유지한 상태에서 수행한다.
+
+# 4. FSD 아키텍처 정책
+
+## 4-1. 레이어 구조
+
+import 방향은 아래를 따른다.
+
+`shared → entities → features → widgets → pages → app`
+
+역방향 import를 금지한다.
+
+## 4-2. 역할 분리
+
+- UI는 `shared/ui` 또는 각 레이어의 `ui`에 둔다.
+- 상태 및 비즈니스 로직은 `model`에 둔다.
+- `pages`는 조합과 배치 역할만 수행한다.
+- 도메인 로직을 `pages`에 직접 작성하지 않는다.
+
+# 5. Next.js 정책 (App Router)
+
+## 5-1. Server / Client 경계
+
+- 기본은 Server Component로 작성한다.
+- `use client`는 상호작용이 필요한 경우에만 최소 범위로 선언한다.
+- 서버에서 처리 가능한 데이터는 서버 컴포넌트에서 처리한다.
+- 클라이언트 컴포넌트는 UI 상태 및 인터랙션 중심으로 구성한다.
+
+## 5-2. 데이터 처리 원칙
+
+- 서버 데이터 캐싱은 서버에서 처리한다.
+- 서버 응답을 전역 클라이언트 상태에 저장하지 않는다.
+- 도메인 상태와 서버 상태를 명확히 분리한다.
+
+# 6. Zustand 정책
+
+## 6-1. 스토어 경계
+
 - 페이지 기준이 아니라 도메인 기준으로 스토어를 나눈다.
 - 서버 상태 캐싱은 Zustand에 두지 않는다.
 
-2. 조회 규칙
+## 6-2. 조회 규칙
+
 - 컴포넌트에서 스토어 전체 구독을 금지한다.
-- 상태 조회는 selector를 사용한다.
+- 반드시 selector를 사용한다.
+- selector가 객체/배열을 반환할 경우 얕은 비교를 고려한다.
 
-3. 업데이트 규칙
-- 상태 업데이트는 `set`으로 처리하고 불변성을 유지한다.
-- `set`은 1단계 병합만 하므로, 중첩 객체는 명시적으로 병합한다.
+## 6-3. 업데이트 규칙
 
-4. 스토어 기본 형태
-- 상태(state)와 액션(actions)은 같은 스토어에 둔다.
+- 상태 업데이트는 `set`으로 처리한다.
+- 불변성을 유지한다.
+- `set`은 1단계 병합만 수행하므로, 중첩 객체는 명시적으로 병합한다.
+
+## 6-4. 스토어 기본 형태
+
+- `state`와 `actions`는 같은 스토어에 둔다.
 - TypeScript 타입을 명시한다.
 
-5. 초기화/리셋
-- 각 스토어에 reset 액션을 제공한다.
-- 필요 시 `store.getInitialState()`로 초기 상태를 복원한다.
+## 6-5. 초기화 / 리셋
 
-## 강제 규칙
+- 각 스토어에 `reset` 액션을 제공한다.
+- 필요 시 `store.getInitialState()`를 활용한다.
 
-- 모든 에이전트(기본/스킬)는 Zustand 코드를 생성하기 전에 이 파일을 먼저 참조해야 한다.
-- 디렉토리/파일 네이밍에서 인위적인 접두어/접미어 사용을 금지한다.
-- 네이밍은 역할 중심의 단일 명사(`header`, `sidebar`, `map`)를 사용한다.
-- 컴포넌트/함수 선언은 function 선언문 대신 화살표 함수로 작성한다.
-- 나머지 세부 규칙은 업무 진행 중 필요 시 합의 후 추가한다.
+# 7. Tailwind CSS 정책
 
-## 참고 자료
+## 7-1. 디자인 시스템 & 토큰 일관성
 
-- https://github.com/pmndrs/zustand#recipes
-- https://raw.githubusercontent.com/pmndrs/zustand/main/docs/guides/slices-pattern.md
-- https://raw.githubusercontent.com/pmndrs/zustand/main/docs/guides/updating-state.md
-- https://raw.githubusercontent.com/pmndrs/zustand/main/docs/guides/prevent-rerenders-with-use-shallow.md
-- https://raw.githubusercontent.com/pmndrs/zustand/main/docs/guides/how-to-reset-state.md
+- 색상, spacing, fontSize, borderRadius 등 디자인 값은 `tailwind.config`의 `theme`에 정의한다.
+- 동일 값이 코드에 반복 하드코딩되지 않도록 한다.
+- 커스텀 디자인 값은 의미 기반 네이밍(`primary`, `danger`, `surface`, `muted`)을 사용한다.
+- 매직 넘버 사용을 최소화한다.
+
+## 7-2. 토큰 승격 기준
+
+다음 조건 중 하나라도 충족하면 `theme`에 정의한다.
+
+- 동일 색상/spacing 값이 2회 이상 반복
+- 브랜드 컬러 정의 필요
+- 디자인 시스템 명세 존재
+- 공통 UI 컴포넌트에서 재사용되는 값
+
+## 7-3. 클래스 작성 원칙
+
+- Tailwind 유틸리티 클래스를 우선 사용한다.
+- 조건부 클래스는 문자열 덧붙이기 대신 헬퍼 함수로 처리한다.
+- 반복되는 class 조합은 상수 또는 유틸 함수로 추출한다.
+- 스타일 로직과 비즈니스 로직을 혼합하지 않는다.
+
+# 8. TypeScript 정책
+
+## 8-1. 타입 안정성
+
+- `any` 사용을 금지한다.
+- 불가피한 경우 `unknown`을 사용하고 타입 가드를 작성한다.
+- Props 및 함수 반환 타입을 명시한다.
+
+## 8-2. 네이밍 규칙
+
+- boolean은 `is` / `has` / `can` / `should` 접두어 사용
+- 이벤트 핸들러는 `handle` 접두어 사용
+- 함수는 동사형, 컴포넌트는 명사형
+
+# 9. Skills Agent 정책
+
+- Skills Agent는 Root Agent 규칙을 재정의할 수 없다.
+- 기능 특화 규칙만 추가 정의할 수 있다.
+- 공통 정책 변경은 Root Agent에서 수행한다.
+
+# 10. 작업 원칙
+
+- 과도한 추상화 금지
+- 기존 구조를 존중한다
+- 유지보수성을 우선한다
+- 추측 기반 리팩토링을 금지한다
