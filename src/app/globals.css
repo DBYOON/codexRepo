@@ -4,6 +4,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --map-grid-line: #ececec;
+  --map-grid-surface: #f7f7f7;
+  --map-grid-size: 58px;
 }
 
 body {
@@ -26,8 +29,8 @@ body {
 @layer utilities {
   .map-grid-background {
     background:
-      linear-gradient(90deg, #ececec 1px, transparent 1px) 0 0 / 58px 58px,
-      linear-gradient(#ececec 1px, transparent 1px) 0 0 / 58px 58px,
-      #f7f7f7;
+      linear-gradient(90deg, var(--map-grid-line) 1px, transparent 1px) 0 0 / var(--map-grid-size) var(--map-grid-size),
+      linear-gradient(var(--map-grid-line) 1px, transparent 1px) 0 0 / var(--map-grid-size) var(--map-grid-size),
+      var(--map-grid-surface);
   }
 }

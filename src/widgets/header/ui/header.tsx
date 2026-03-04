@@ -1,6 +1,6 @@
-import MapmyrunLogo from "@/shared/ui/mapmyrun-logo";
+import MapmyrunLogo from "@/shared/ui/logo";
 
-import { navItems } from "../model/nav-items";
+import { navItems } from "../model/nav";
 
 const Header = () => {
   return (
@@ -14,7 +14,7 @@ const Header = () => {
           <button
             key={item.key}
             type="button"
-            className={`relative inline-flex h-full cursor-pointer items-center justify-center bg-transparent px-2 text-[27px] font-bold tracking-[-0.4px] text-[#1a1a1a] max-desktop:text-[15px] ${
+            className={`relative inline-flex h-full cursor-pointer items-center justify-center bg-transparent px-2 text-[27px] font-bold tracking-[-0.4px] text-text-nav max-desktop:text-[15px] ${
               item.isActive
                 ? "after:absolute after:bottom-0 after:left-[7px] after:right-[7px] after:h-1 after:bg-brand-accent after:content-[''] max-desktop:after:bottom-[2px]"
                 : ""
@@ -29,10 +29,10 @@ const Header = () => {
       <div className="flex justify-end max-desktop:justify-center">
         <button
           type="button"
-          className="inline-flex h-[54px] w-[54px] cursor-pointer items-center justify-center rounded-full border-0 bg-[#f4f4f4]"
+          className="inline-flex h-[54px] w-[54px] cursor-pointer items-center justify-center rounded-full border-0 bg-surface-panel"
           aria-label="프로필"
         >
-          <span className="h-8 w-8 rounded-full border-4 border-[#d6d6d6] border-t-transparent" />
+          <span className="h-8 w-8 rounded-full border-4 border-border-avatar border-t-transparent" />
         </button>
       </div>
     </header>

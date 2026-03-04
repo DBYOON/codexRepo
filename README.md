@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 1. 서비스 정의
+**GPS 기반으로 러닝 활동을 기록하고, 러닝 코스를 만들며, 운동 데이터를 분석하는 러닝 트래킹 플랫폼이다.**
 
-## Getting Started
+핵심 목적
+- 러닝 기록 (Activity Tracking)
+- 러닝 코스 생성 (Route Builder)
+- 운동 데이터 분석 (Analytics)
 
-First, run the development server:
+# 2. 핵심 기능 구조
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+서비스 기능은 다음 4가지 영역으로 구성된다.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| 기능 영역 | 설명 |
+|---|---|
+| Activity Tracking | 러닝 활동 기록 |
+| Route Builder | 러닝 경로 생성 |
+| Workout History | 운동 기록 관리 |
+| Analytics | 러닝 데이터 분석 |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 3. 기능 상세
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 3.1 러닝 기록 (Activity Tracking)
 
-## Learn More
+GPS 기반으로 러닝 활동을 기록하고 운동 데이터를 저장한다.
 
-To learn more about Next.js, take a look at the following resources:
+### 기록 데이터
+- 거리 (Distance)
+- 운동 시간 (Duration)
+- 평균 페이스 (Pace)
+- 칼로리 (Calories)
+- 고도 (Elevation)
+- 이동 경로 (GPS Route)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+지도에는 러닝 경로가 GPS 기반으로 표시된다.
 
-## Deploy on Vercel
+## 3.2 러닝 코스 생성 (Route Builder)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+지도에서 러닝 코스를 직접 만들 수 있는 기능.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 기능
+- 지도 클릭으로 코스 생성
+- 자동 거리 계산
+- 고도 분석
+- 코스 저장
+
+## 3.3 GPS 그림 러닝 코스 생성 (Art Route)
+
+기존 **러닝 코스 생성(Route Builder)** 기능에  
+**그림 템플릿 기반 러닝 코스 생성 기능**을 확장한 기능이다.
+
+사용자는 지도에서 직접 경로를 설계하는 대신,  
+**미리 준비된 그림 템플릿을 선택하여 러닝 코스를 생성**할 수 있다.
+
+이를 통해 러닝 코스를 단순한 운동 경로가 아니라  
+**지도 위에 그림을 그리는 경험(GPS Art Running)** 으로 확장한다.
+
+### 특징
+
+- 복잡한 경로 설계 없이 **그림 템플릿 선택만으로 러닝 코스 생성**
+- 지도 위에서 **위치 / 크기 / 방향을 조정하여 코스 배치**
+- 러닝 코스가 **지도에서 하나의 그림 형태로 표현**
+- 생성된 코스를 **저장 및 공유 가능**
+
+### 기능
+
+- 그림 템플릿 선택 (예: 하트, 별, 동물 등)
+- 지도 위에 템플릿 배치
+- 위치 이동 / 회전 / 크기 조정
+- 러닝 코스 자동 생성
+- 예상 러닝 거리 계산
+- 코스 저장 및 공유
+
+### 예시
+
+- ❤️ Heart Run
+- ⭐ Star Run
+- 🐶 Dog Run
+
+## 3.4 러닝 데이터 분석 (Stats / Analytics)
+
+러닝 기록이 누적되면 운동 데이터를 통계로 분석한다.
+
+### 분석 데이터
+- 월별 러닝 거리
+- 평균 페이스
+- 총 운동 시간
+- 칼로리 소모

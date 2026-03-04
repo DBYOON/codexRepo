@@ -1,4 +1,4 @@
-import { PlannerPage } from "@/views/planner";
+import { PlannerPage } from "@/pages/planner";
 
 const Home = () => <PlannerPage />;
 

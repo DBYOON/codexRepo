@@ -32,12 +32,12 @@ const Sidebar = () => {
         </div>
 
         <p className="mt-6 text-[18px] font-bold text-brand-sub">사용자 지정</p>
-        <div className="mt-[14px] grid grid-cols-3 overflow-hidden rounded border border-[#b7b7b7]">
+        <div className="mt-[14px] grid grid-cols-3 overflow-hidden rounded border border-border-subtle">
           {activityOptions.map((option, index) => (
             <button
               key={option}
               type="button"
-              className={`h-[36px] cursor-pointer border-0 border-r border-[#b7b7b7] text-[7px] last:border-r-0 ${
+              className={`h-[36px] cursor-pointer border-0 border-r border-border-subtle text-[7px] last:border-r-0 ${
                 index === 0 ? "bg-surface-muted" : "bg-white"
               }`}
             >
@@ -53,7 +53,7 @@ const Sidebar = () => {
               <button
                 type="button"
                 className={`h-[30px] w-[52px] cursor-pointer rounded-full border-0 p-[3px] transition ${
-                  toggle.enabled ? "bg-[#2f2f2f]" : "bg-[#d8d8d8]"
+                  toggle.enabled ? "bg-control-on" : "bg-control-off"
                 }`}
                 aria-label={`${toggle.label} 토글`}
               >
@@ -81,7 +81,7 @@ const Sidebar = () => {
 
       <button
         type="button"
-        className="mt-auto h-[82px] cursor-pointer border-0 bg-[#0d0d0d] text-[30px] font-extrabold tracking-[0.3px] text-white"
+        className="mt-auto h-[82px] cursor-pointer border-0 bg-surface-strong text-[30px] font-extrabold tracking-[0.3px] text-white"
       >
         루트 저장
       </button>
