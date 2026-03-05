@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "루트 마이런",
@@ -13,7 +14,10 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <Script src={`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_KEY}&autoload=false`} strategy="beforeInteractive" />
+        {children}
+      </body>
     </html>
   );
 };
