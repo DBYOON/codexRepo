@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 declare global {
   interface Window {
@@ -15,12 +15,13 @@ declare global {
 }
 
 const Map = () => {
+  const mapRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const container = document.getElementById("map");
+    const container = mapRef.current;
     if (!container || !window.kakao?.maps) {
       return;
     }
-    
 
     window.kakao.maps.load(() => {
       const options = {
@@ -33,7 +34,7 @@ const Map = () => {
     });
   }, []);
 
-  return <div id="map" className="z-map h-full w-full" />;
+  return <div id="map" ref={mapRef} className="z-map h-full w-full" />;
 };
 
 export default Map;
