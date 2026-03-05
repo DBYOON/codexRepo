@@ -3,6 +3,36 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
+      zIndex: {
+        sidebar: "200",
+        header: "200",
+        map: "100",
+      },
+      spacing: {
+        sidebar: "340px",
+        "section-y": "22px",
+        "field-h": "36px",
+        "group-gap": "14px",
+        "switch-h": "30px",
+        "switch-w": "52px",
+        "switch-pad": "3px",
+        "action-h": "46px",
+        "save-h": "82px",
+      },
+      fontSize: {
+        "sidebar-xxs": "7px",
+        "sidebar-xs": "10px",
+        "sidebar-sm": "12px",
+        "sidebar-input": "13px",
+        "sidebar-title": "16px",
+        "sidebar-body": "18px",
+        "sidebar-heading": "24px",
+        "sidebar-cta": "30px",
+      },
+      letterSpacing: {
+        "sidebar-tight": "0.2px",
+        "sidebar-wide": "0.3px",
+      },
       screens: {
         desktop: "1200px",
       },
