@@ -9,6 +9,11 @@ module.exports = {
         map: "100",
       },
       spacing: {
+        "header-h": "82px",
+        "header-nav-gap": "18px",
+        "header-nav-min-h-mobile": "50px",
+        "header-profile-size": "54px",
+        "header-underline-inset": "7px",
         sidebar: "340px",
         "section-y": "22px",
         "field-h": "36px",
@@ -20,6 +25,8 @@ module.exports = {
         "save-h": "82px",
       },
       fontSize: {
+        "header-nav": "27px",
+        "header-nav-mobile": "15px",
         "sidebar-xxs": "7px",
         "sidebar-xs": "10px",
         "sidebar-sm": "12px",
@@ -30,8 +37,12 @@ module.exports = {
         "sidebar-cta": "30px",
       },
       letterSpacing: {
+        "header-nav-tight": "-0.4px",
         "sidebar-tight": "0.2px",
         "sidebar-wide": "0.3px",
+      },
+      gridTemplateColumns: {
+        "header-layout": "360px 1fr 360px",
       },
       screens: {
         desktop: "1200px",
