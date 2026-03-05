@@ -33,9 +33,12 @@
 
 ## 4-1. 레이어 구조
 
-import 방향은 아래를 따른다.
+레이어는 아래 방향으로만 의존한다.
 
-`shared → entities → features → widgets → pages → app`
+`app → pages → widgets → features → entities → shared`
+
+상위 레이어는 하위 레이어를 import 할 수 있다.
+하위 레이어는 상위 레이어를 import 할 수 없다.
 
 역방향 import를 금지한다.
 
