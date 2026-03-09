@@ -1,4 +1,4 @@
-import { PlannerPage } from "@/pages/planner";
+import { PlannerPage } from "@/page-modules/planner";
 
 const Home = () => <PlannerPage />;
 
