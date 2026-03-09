@@ -1,0 +1,36 @@
+@config "../../tailwind.config.js";
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --map-grid-line: #ececec;
+  --map-grid-surface: #f7f7f7;
+  --map-grid-size: 58px;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+}
+
+@layer utilities {
+  .map-grid-background {
+    background:
+      linear-gradient(90deg, var(--map-grid-line) 1px, transparent 1px) 0 0 / var(--map-grid-size) var(--map-grid-size),
+      linear-gradient(var(--map-grid-line) 1px, transparent 1px) 0 0 / var(--map-grid-size) var(--map-grid-size),
+      var(--map-grid-surface);
+  }
+}
