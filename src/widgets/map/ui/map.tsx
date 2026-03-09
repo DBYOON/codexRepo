@@ -3,11 +3,16 @@
 import { useEffect, useRef } from "react";
 
 declare global {
+  interface KakaoMap {
+    setCenter: (latLng: unknown) => void;
+  }
+
   interface Window {
     kakao?: {
       maps: {
         LatLng: new (lat: number, lng: number) => unknown;
-        Map: new (container: HTMLElement, options: { center: unknown; level: number }) => unknown;
+        Map: new (container: HTMLElement, options: { center: unknown; level: number }) => KakaoMap;
+        Marker: new (options: { map: KakaoMap; position: unknown }) => unknown;
         load: (callback: () => void) => void;
       };
     };
@@ -30,7 +35,27 @@ const Map = () => {
       };
 
       // Initialize Kakao map once the SDK is ready.
-      new window.kakao!.maps.Map(container, options);
+      const map = new window.kakao!.maps.Map(container, options);
+
+      if (!navigator.geolocation) {
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const currentPosition = new window.kakao!.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+          new window.kakao!.maps.Marker({
+            map,
+            position: currentPosition,
+          });
+
+          map.setCenter(currentPosition);
+        },
+        () => {
+          // If permission is denied or lookup fails, keep the default center.
+        },
+      );
     });
   }, []);
 
