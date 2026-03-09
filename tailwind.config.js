@@ -44,9 +44,6 @@ module.exports = {
       gridTemplateColumns: {
         "header-layout": "360px 1fr 360px",
       },
-      screens: {
-        desktop: "1200px",
-      },
       colors: {
         brand: {
           accent: "#cf1f2e",

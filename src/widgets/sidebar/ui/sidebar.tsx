@@ -12,7 +12,7 @@ const Sidebar = () => {
   return (
     <div className="relative z-sidebar h-full">
       <aside
-        className={`flex h-full flex-col overflow-hidden bg-surface-panel transition-[width,min-width] duration-200 max-desktop:w-full max-desktop:min-w-0 max-desktop:border-r-0 max-desktop:border-b ${
+        className={`flex h-full flex-col overflow-hidden bg-surface-panel transition-[width,min-width] duration-200 ${
           isCollapsed ? "min-w-0 w-0 border-r-0" : "min-w-sidebar w-sidebar border-r border-border-panel"
         }`}
       >

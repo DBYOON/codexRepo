@@ -4,19 +4,19 @@ import { navItems } from "../model/nav";
 
 const Header = () => {
   return (
-    <header className="z-header grid h-header-h w-full grid-cols-header-layout items-center border-b border-border-base bg-white px-5 max-desktop:h-auto max-desktop:grid-cols-1 max-desktop:gap-3 max-desktop:px-4 max-desktop:py-3">
-      <div className="flex items-center justify-start max-desktop:justify-center">
+    <header className="z-header grid h-header-h w-full grid-cols-header-layout items-center border-b border-border-base bg-white px-5">
+      <div className="flex items-center justify-start">
         <MapmyrunLogo />
       </div>
 
-      <nav className="flex h-full items-stretch justify-center gap-header-nav-gap max-desktop:justify-center max-desktop:min-h-header-nav-min-h-mobile" aria-label="메인 메뉴">
+      <nav className="flex h-full items-stretch justify-center gap-header-nav-gap" aria-label="메인 메뉴">
         {navItems.map((item) => (
           <button
             key={item.key}
             type="button"
-            className={`relative inline-flex h-full cursor-pointer items-center justify-center bg-transparent px-2 text-header-nav font-bold tracking-header-nav-tight text-text-nav max-desktop:text-header-nav-mobile ${
+            className={`relative inline-flex h-full cursor-pointer items-center justify-center bg-transparent px-2 text-header-nav font-bold tracking-header-nav-tight text-text-nav ${
               item.isActive
-                ? "after:absolute after:bottom-0 after:left-header-underline-inset after:right-header-underline-inset after:h-1 after:bg-brand-accent after:content-[''] max-desktop:after:bottom-[2px]"
+                ? "after:absolute after:bottom-0 after:left-header-underline-inset after:right-header-underline-inset after:h-1 after:bg-brand-accent after:content-['']"
                 : ""
             }`}
             aria-current={item.isActive ? "page" : undefined}
@@ -26,7 +26,7 @@ const Header = () => {
         ))}
       </nav>
 
-      <div className="flex justify-end max-desktop:justify-center">
+      <div className="flex justify-end">
         <button
           type="button"
           className="inline-flex h-header-profile-size w-header-profile-size cursor-pointer items-center justify-center rounded-full border-0 bg-surface-panel"
